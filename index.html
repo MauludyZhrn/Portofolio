@@ -170,6 +170,12 @@
 </head>
 <body class="antialiased selection:bg-neon-cyan selection:text-white">
 
+    <!-- 📝 CATATAN UMUM UNTUK MENGEDIT:
+         1. Cari teks di antara tag penutup ">" dan pembuka "<" untuk mengubah kata-kata di layar.
+         2. Untuk mengubah foto, ganti link URL di dalam atribut src="https://..."
+         3. Untuk mengubah link, ganti tanda pagar "#" pada href="#" menjadi link tujuan Anda.
+    -->
+
     <!-- Ambient Background -->
     <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-20 opacity-60"></canvas>
     <div class="ambient-orb orb-1"></div>
@@ -177,6 +183,7 @@
     <div class="ambient-orb orb-3"></div>
 
     <!-- Navigation -->
+    <!-- 📝 CARA UBAH: Ubah teks "A.M.Z." di bawah dengan inisial atau logo Anda -->
     <nav class="fixed w-full top-0 z-50 glass-panel !rounded-none !border-t-0 !border-l-0 !border-r-0 py-4">
         <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
             <a href="#home" class="font-orbitron font-bold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
@@ -197,15 +204,18 @@
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative">
         <div class="container mx-auto px-6 lg:px-12 text-center relative z-10">
             <div class="inline-block mb-4 px-4 py-1 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-cyan-400 text-xs font-poppins tracking-widest uppercase reveal">
-                Welcome to my universe
+                Welcome to my universe <!-- 📝 CARA UBAH: Tagline kecil di atas nama -->
             </div>
             <h1 class="font-orbitron text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white reveal" style="transition-delay: 0.1s;">
-                Achmad Mauludy <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 text-glow-cyan">Zahron</span>
+                <!-- 📝 CARA UBAH: Nama Depan --> Achmad Mauludy 
+                <!-- 📝 CARA UBAH: Nama Belakang (dengan efek warna) --> <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 text-glow-cyan">Zahron</span>
             </h1>
             <h2 class="font-poppins text-xl md:text-2xl text-slate-300 font-medium mb-4 reveal" style="transition-delay: 0.2s;">
+                <!-- 📝 CARA UBAH: Jabatan/Profesi Anda -->
                 Creative Technologist <span class="text-cyan-400 mx-2">•</span> Designer <span class="text-purple-400 mx-2">•</span> Falak Science Activist
             </h2>
             <p class="max-w-2xl mx-auto text-slate-400 mb-10 text-lg reveal" style="transition-delay: 0.3s;">
+                <!-- 📝 CARA UBAH: Deskripsi singkat di bawah jabatan -->
                 Bridging the boundless realms of digital creativity, modern technology, and the precise mathematical beauty of Islamic Astronomy (Ilmu Falak).
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 reveal" style="transition-delay: 0.4s;">
@@ -230,19 +240,24 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="glass-panel p-8 reveal">
                     <h3 class="font-poppins text-2xl font-semibold mb-4 text-white">Multidisciplinary Creator & Researcher</h3>
+                    
+                    <!-- 📝 CARA UBAH: Teks paragraf bio / profil Anda -->
                     <p class="text-slate-300 mb-4 leading-relaxed">
                         I am an enthusiastic professional operating at the intersection of art, technology, and science. My journey involves translating complex ideas into compelling visual stories through design, photography, and video creation.
                     </p>
                     <p class="text-slate-300 leading-relaxed mb-6">
                         Beyond the digital canvas, I am deeply engaged as an activist and researcher in <span class="text-purple-400 font-semibold">Islamic Astronomy (Ilmu Falak)</span>, applying rigorous observation and calculation to understand celestial mechanics, lunar phases, and the Hijri calendar.
                     </p>
+                    
+                    <!-- 📝 CARA UBAH LINK SOSMED: Ganti href="#" dengan link profil Instagram/YouTube/LinkedIn Anda -->
                     <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white transition"><i class="ph ph-instagram-logo text-xl"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white transition"><i class="ph ph-youtube-logo text-xl"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white transition"><i class="ph ph-linkedin-logo text-xl"></i></a>
+                        <a href="#" target="_blank" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-400/20 transition"><i class="ph ph-instagram-logo text-xl"></i></a>
+                        <a href="#" target="_blank" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-400/20 transition"><i class="ph ph-youtube-logo text-xl"></i></a>
+                        <a href="#" target="_blank" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-400/20 transition"><i class="ph ph-linkedin-logo text-xl"></i></a>
                     </div>
                 </div>
 
+                <!-- 📝 CARA UBAH: Kotak Keahlian (Ikon bisa diganti dari Phosphor Icons) -->
                 <div class="grid grid-cols-2 gap-4">
                     <div class="glass-panel p-6 text-center reveal" style="transition-delay: 0.1s;">
                         <i class="ph ph-bezier-curve text-4xl text-cyan-400 mb-3 block"></i>
@@ -276,6 +291,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <!-- Skill List -->
                 <div class="space-y-6">
+                    <!-- 📝 CARA UBAH BAR PERSENTASE: Ubah angka di data-progress="95" dan pada teks "95%" -->
                     <div class="reveal skill-item" data-progress="95">
                         <div class="flex justify-between mb-1">
                             <span class="font-poppins text-sm font-medium text-white">Graphic Design</span>
@@ -300,6 +316,7 @@
                         <div class="progress-track"><div class="progress-fill bg-cyan-400 text-cyan-400"></div></div>
                     </div>
 
+                    <!-- Untuk Falak, warnanya ungu (bg-purple-400 text-purple-400) -->
                     <div class="reveal skill-item" data-progress="92">
                         <div class="flex justify-between mb-1">
                             <span class="font-poppins text-sm font-medium text-white">Islamic Astronomy (Ilmu Falak)</span>
@@ -312,6 +329,8 @@
                 <!-- Tools Badges -->
                 <div class="glass-panel p-8 reveal flex flex-col justify-center">
                     <h3 class="font-orbitron text-xl text-white mb-6">Software & Instruments</h3>
+                    
+                    <!-- 📝 CARA UBAH: Anda bisa menghapus/menambah badge tools di bawah ini -->
                     <div class="flex flex-wrap gap-3">
                         <span class="px-4 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-sm font-poppins flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" class="w-4 h-4" alt="PS"> Photoshop</span>
                         <span class="px-4 py-2 rounded-full border border-purple-400/30 bg-purple-400/10 text-sm font-poppins flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" class="w-4 h-4" alt="PR"> Premiere Pro</span>
@@ -334,18 +353,23 @@
                 <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
             </div>
 
-            <!-- Filter (Visual only for this demo) -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
-                <button class="px-5 py-2 rounded-full glass-panel text-white text-sm hover:border-cyan-400 border-cyan-400 transition">All</button>
-                <button class="px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white hover:border-cyan-400 transition">Design</button>
-                <button class="px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white hover:border-cyan-400 transition">Photo/Video</button>
-                <button class="px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white hover:border-purple-400 transition">Ilmu Falak</button>
+            <!-- Filter Portofolio -->
+            <!-- 📝 CATATAN: Atribut data-filter harus cocok dengan data-category di setiap kotak gambar -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 reveal" id="filter-buttons">
+                <button data-filter="all" class="filter-btn px-5 py-2 rounded-full glass-panel text-white text-sm border-cyan-400 transition active">All</button>
+                <button data-filter="design" class="filter-btn px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white border-transparent hover:border-cyan-400 transition">Design</button>
+                <button data-filter="media" class="filter-btn px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white border-transparent hover:border-cyan-400 transition">Photo/Video</button>
+                <button data-filter="falak" class="filter-btn px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white border-transparent hover:border-purple-400 transition">Ilmu Falak</button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Portfolio Item 1 -->
-                <div class="glass-panel overflow-hidden group cursor-pointer reveal">
+            <!-- Grid Galeri -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+                
+                <!-- Portfolio Item 1 (Design) -->
+                <!-- 📝 CARA UBAH: Tambahkan kategori "design", "media", atau "falak" pada data-category -->
+                <div class="portfolio-card glass-panel overflow-hidden group cursor-pointer reveal transition-all duration-500" data-category="design">
                     <div class="relative h-64 overflow-hidden">
+                        <!-- 📝 CARA UBAH GAMBAR: Ganti link src di bawah ini -->
                         <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Abstract Design" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
                             <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Graphic Design</span>
@@ -354,8 +378,8 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 2 -->
-                <div class="glass-panel overflow-hidden group cursor-pointer reveal" style="transition-delay: 0.1s;">
+                <!-- Portfolio Item 2 (Media) -->
+                <div class="portfolio-card glass-panel overflow-hidden group cursor-pointer reveal transition-all duration-500" data-category="media" style="transition-delay: 0.1s;">
                     <div class="relative h-64 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=800&auto=format&fit=crop" alt="Photography" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
@@ -365,8 +389,8 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 3 -->
-                <div class="glass-panel overflow-hidden group cursor-pointer reveal" style="transition-delay: 0.2s;">
+                <!-- Portfolio Item 3 (Falak) -->
+                <div class="portfolio-card glass-panel overflow-hidden group cursor-pointer reveal transition-all duration-500" data-category="falak" style="transition-delay: 0.2s;">
                     <div class="relative h-64 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=800&auto=format&fit=crop" alt="Falak" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
@@ -376,8 +400,8 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 4 -->
-                <div class="glass-panel overflow-hidden group cursor-pointer reveal">
+                <!-- Portfolio Item 4 (Media) -->
+                <div class="portfolio-card glass-panel overflow-hidden group cursor-pointer reveal transition-all duration-500" data-category="media">
                     <div class="relative h-64 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=800&auto=format&fit=crop" alt="Video Editing" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
@@ -387,8 +411,8 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 5 -->
-                <div class="glass-panel overflow-hidden group cursor-pointer reveal" style="transition-delay: 0.1s;">
+                <!-- Portfolio Item 5 (Media) -->
+                <div class="portfolio-card glass-panel overflow-hidden group cursor-pointer reveal transition-all duration-500" data-category="media" style="transition-delay: 0.1s;">
                     <div class="relative h-64 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" alt="Content" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
@@ -398,8 +422,9 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 6 -->
-                <div class="glass-panel overflow-hidden group cursor-pointer reveal flex items-center justify-center p-6" style="transition-delay: 0.2s;">
+                <!-- Portfolio Item 6 (Link to full gallery) -->
+                <!-- 📝 CARA UBAH: Anda bisa jadikan ini link eksternal dengan membungkus tag a href="..." di dalamnya -->
+                <div class="portfolio-card glass-panel overflow-hidden group cursor-pointer reveal flex items-center justify-center p-6 transition-all duration-500" data-category="all" style="transition-delay: 0.2s;">
                     <div class="text-center">
                         <i class="ph ph-arrow-circle-right text-5xl text-cyan-400 mb-3 block"></i>
                         <h3 class="text-white font-poppins font-semibold">View Full Gallery</h3>
@@ -414,7 +439,8 @@
     <section id="falak" class="py-24 relative overflow-hidden bg-gradient-to-b from-transparent to-[#100524]/50 border-y border-purple-500/10">
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16">
-                <!-- Orbital Animation Graphic -->
+                
+                <!-- Orbital Animation Graphic (Tidak perlu diubah) -->
                 <div class="w-full lg:w-1/2 flex justify-center reveal">
                     <div class="orbit-container">
                         <div class="orbit-center"></div>
@@ -431,6 +457,8 @@
                         <i class="ph ph-moon-stars"></i> Specialized Field
                     </div>
                     <h2 class="font-orbitron text-3xl md:text-4xl font-bold text-white mb-6">Islamic Astronomy <br><span class="text-purple-400">(Ilmu Falak)</span></h2>
+                    
+                    <!-- 📝 CARA UBAH: Deskripsi bagian Ilmu Falak -->
                     <p class="text-slate-300 mb-8 leading-relaxed">
                         Dedicated to the observation and calculation of celestial bodies to serve religious and scientific purposes. My work in this field involves modern technology to preserve and advance classical astronomical traditions.
                     </p>
@@ -486,7 +514,8 @@
                         <p class="text-slate-400 mb-8 text-sm">Whether it's a creative digital project, media production, or discussions regarding Ilmu Falak, my inbox is always open.</p>
                         
                         <div class="space-y-6">
-                            <a href="mailto:contact@example.com" class="flex items-center gap-4 group">
+                            <!-- 📝 CARA UBAH EMAIL: Ganti "contact@example.com" dan "hello@achmadzahron.com" -->
+                            <a href="mailto:hello@achmadzahron.com" class="flex items-center gap-4 group">
                                 <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-white transition">
                                     <i class="ph ph-envelope-simple text-xl"></i>
                                 </div>
@@ -496,7 +525,8 @@
                                 </div>
                             </a>
                             
-                            <a href="#" class="flex items-center gap-4 group">
+                            <!-- 📝 CARA UBAH IG: Ganti href="#" dengan link IG dan "@am.zahron" dengan username -->
+                            <a href="https://instagram.com/am.zahron" target="_blank" class="flex items-center gap-4 group">
                                 <div class="w-12 h-12 rounded-full bg-purple-400/10 border border-purple-400/30 flex items-center justify-center text-purple-400 group-hover:bg-purple-400 group-hover:text-white transition">
                                     <i class="ph ph-instagram-logo text-xl"></i>
                                 </div>
@@ -508,16 +538,22 @@
                         </div>
                     </div>
 
-                    <!-- Form -->
-                    <form class="space-y-6" onsubmit="event.preventDefault();">
+                    <!-- Contact Form -->
+                    <!-- 📝 CARA UBAH FUNGSI FORM (PENTING!):
+                         Karena GitHub Pages adalah web statis, Anda perlu menggunakan layanan seperti Formspree agar form ini bisa mengirim email ke Anda.
+                         1. Daftar gratis di https://formspree.io/
+                         2. Buat project/form baru, lalu copy link "Endpoint" yang diberikan.
+                         3. Ganti URL "https://formspree.io/f/XXXXXXX" di bawah ini dengan link dari Formspree Anda.
+                    -->
+                    <form action="https://formspree.io/f/XXXXXXX" method="POST" class="space-y-6">
                         <div>
-                            <input type="text" placeholder="Your Name" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500">
+                            <input type="text" name="name" required placeholder="Your Name" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500">
                         </div>
                         <div>
-                            <input type="email" placeholder="Your Email" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500">
+                            <input type="email" name="email" required placeholder="Your Email" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500">
                         </div>
                         <div>
-                            <textarea placeholder="Your Message" rows="4" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500 resize-none"></textarea>
+                            <textarea name="message" required placeholder="Your Message" rows="4" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500 resize-none"></textarea>
                         </div>
                         <button type="submit" class="btn-neon btn-neon-cyan w-full py-3 rounded-lg font-poppins font-medium">
                             Send Message <i class="ph ph-paper-plane-right ml-2"></i>
@@ -537,15 +573,16 @@
 
     <!-- Scripts -->
     <script>
-        // 1. Reveal Animations on Scroll
+        // 📝 CATATAN: Ini adalah bagian Javascript penggerak animasi & fitur (Action)
+
+        // 1. Fitur Reveal Animation saat di-scroll ke bawah
         const revealElements = document.querySelectorAll('.reveal');
-        
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                     
-                    // Trigger skill bar animations if within view
+                    // Memicu animasi bar skill jika elemen tersebut muncul di layar
                     if(entry.target.classList.contains('skill-item')) {
                         const bar = entry.target.querySelector('.progress-fill');
                         const progress = entry.target.getAttribute('data-progress');
@@ -556,10 +593,55 @@
                 }
             });
         }, { threshold: 0.1 });
-
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // 2. Interactive Canvas Background (Network/Stars)
+
+        // 2. Fitur Filter Portofolio (Merespon Tombol Kategori)
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Hapus style aktif dari semua tombol
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('text-white', 'border-cyan-400', 'border-purple-400', 'active');
+                    btn.classList.add('text-slate-400', 'border-transparent');
+                });
+                
+                // Tambahkan style aktif ke tombol yang diklik
+                button.classList.remove('text-slate-400', 'border-transparent');
+                button.classList.add('text-white', 'active');
+                
+                // Beri warna ungu jika kategori falak, biru cyan jika yang lain
+                if(button.getAttribute('data-filter') === 'falak') {
+                    button.classList.add('border-purple-400');
+                } else {
+                    button.classList.add('border-cyan-400');
+                }
+
+                // Logika menyembunyikan/menampilkan kotak galeri
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue || card.getAttribute('data-category') === 'all') {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300); // 300ms sesuaikan dengan duration-500 tailwind
+                    }
+                });
+            });
+        });
+
+
+        // 3. Fitur Background Animasi Canvas (Network/Bintang)
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -606,7 +688,7 @@
                 particles[i].update();
                 particles[i].draw();
                 
-                // Draw connecting lines
+                // Menggambar garis penghubung antar titik
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
@@ -625,7 +707,7 @@
             requestAnimationFrame(animate);
         }
         
-        // Start animation immediately
+        // Memulai animasi background seketika
         animate();
     </script>
 </body>
