@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achmad Mauludy Zahron | Creative Technologist & Falak Activist</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;500;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        deep: '#050914',
+                        neon: {
+                            blue: '#3b82f6',
+                            cyan: '#06b6d4',
+                            purple: '#a855f7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base & Scrollbar */
+        body {
+            background-color: #050914;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050914;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(6, 182, 212, 0.5);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(168, 85, 247, 0.8);
+        }
+
+        /* Ambient Glowing Orbs */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out alternate;
+            opacity: 0.4;
+        }
+        .orb-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: rgba(6, 182, 212, 0.4); }
+        .orb-2 { bottom: -10%; right: -10%; width: 600px; height: 600px; background: rgba(168, 85, 247, 0.3); animation-delay: -5s; }
+        .orb-3 { top: 40%; left: 40%; width: 400px; height: 400px; background: rgba(59, 130, 246, 0.3); animation-delay: -10s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        /* Glassmorphism Core */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-panel:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+            transform: translateY(-5px);
+        }
+
+        /* Neon Accents */
+        .text-glow-cyan { text-shadow: 0 0 15px rgba(6, 182, 212, 0.6); }
+        .text-glow-purple { text-shadow: 0 0 15px rgba(168, 85, 247, 0.6); }
+        
+        .btn-neon {
+            position: relative;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid transparent;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .btn-neon-cyan { border-color: rgba(6, 182, 212, 0.5); color: #06b6d4; box-shadow: 0 0 10px rgba(6,182,212,0.2); }
+        .btn-neon-cyan:hover { background: rgba(6, 182, 212, 0.2); box-shadow: 0 0 20px rgba(6,182,212,0.6); color: #fff; }
+        
+        .btn-neon-purple { border-color: rgba(168, 85, 247, 0.5); color: #a855f7; box-shadow: 0 0 10px rgba(168,85,247,0.2); }
+        .btn-neon-purple:hover { background: rgba(168, 85, 247, 0.2); box-shadow: 0 0 20px rgba(168,85,247,0.6); color: #fff; }
+
+        /* Progress Bar Animation */
+        .progress-track { background: rgba(255,255,255,0.05); border-radius: 999px; overflow: hidden; height: 8px; }
+        .progress-fill {
+            height: 100%;
+            border-radius: 999px;
+            box-shadow: 0 0 10px currentColor;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Falak Orbit Animation */
+        .orbit-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px dashed rgba(6, 182, 212, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 20s linear infinite;
+        }
+        .orbit-planet {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #a855f7;
+            border-radius: 50%;
+            top: -10px;
+            left: 140px;
+            box-shadow: 0 0 15px #a855f7;
+        }
+        .orbit-center {
+            width: 60px;
+            height: 60px;
+            background: #06b6d4;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #06b6d4;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 100% { box-shadow: 0 0 50px #06b6d4, 0 0 100px #06b6d4; } }
+
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Portfolio Grid Override */
+        .portfolio-overlay {
+            background: linear-gradient(to top, rgba(5,9,20,0.9) 0%, rgba(5,9,20,0) 100%);
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+        .group:hover .portfolio-overlay { opacity: 1; }
+    </style>
+</head>
+<body class="antialiased selection:bg-neon-cyan selection:text-white">
+
+    <!-- Ambient Background -->
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-20 opacity-60"></canvas>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-panel !rounded-none !border-t-0 !border-l-0 !border-r-0 py-4">
+        <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="#home" class="font-orbitron font-bold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                A.M.Z.
+            </a>
+            <div class="hidden md:flex space-x-8 font-poppins text-sm font-medium">
+                <a href="#about" class="hover:text-cyan-400 transition">About</a>
+                <a href="#expertise" class="hover:text-cyan-400 transition">Expertise</a>
+                <a href="#portfolio" class="hover:text-cyan-400 transition">Portfolio</a>
+                <a href="#falak" class="hover:text-purple-400 transition">Ilmu Falak</a>
+                <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+            </div>
+            <button class="md:hidden text-2xl text-cyan-400"><i class="ph ph-list"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="container mx-auto px-6 lg:px-12 text-center relative z-10">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-cyan-400 text-xs font-poppins tracking-widest uppercase reveal">
+                Welcome to my universe
+            </div>
+            <h1 class="font-orbitron text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white reveal" style="transition-delay: 0.1s;">
+                Achmad Mauludy <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 text-glow-cyan">Zahron</span>
+            </h1>
+            <h2 class="font-poppins text-xl md:text-2xl text-slate-300 font-medium mb-4 reveal" style="transition-delay: 0.2s;">
+                Creative Technologist <span class="text-cyan-400 mx-2">•</span> Designer <span class="text-purple-400 mx-2">•</span> Falak Science Activist
+            </h2>
+            <p class="max-w-2xl mx-auto text-slate-400 mb-10 text-lg reveal" style="transition-delay: 0.3s;">
+                Bridging the boundless realms of digital creativity, modern technology, and the precise mathematical beauty of Islamic Astronomy (Ilmu Falak).
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal" style="transition-delay: 0.4s;">
+                <a href="#portfolio" class="btn-neon btn-neon-cyan px-8 py-3 rounded-lg font-poppins font-medium flex items-center justify-center gap-2">
+                    <i class="ph ph-layout"></i> View Portfolio
+                </a>
+                <a href="#contact" class="btn-neon btn-neon-purple px-8 py-3 rounded-lg font-poppins font-medium flex items-center justify-center gap-2">
+                    <i class="ph ph-envelope-simple"></i> Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-orbitron text-3xl md:text-4xl font-bold text-white mb-2">About <span class="text-cyan-400">Me</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="glass-panel p-8 reveal">
+                    <h3 class="font-poppins text-2xl font-semibold mb-4 text-white">Multidisciplinary Creator & Researcher</h3>
+                    <p class="text-slate-300 mb-4 leading-relaxed">
+                        I am an enthusiastic professional operating at the intersection of art, technology, and science. My journey involves translating complex ideas into compelling visual stories through design, photography, and video creation.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed mb-6">
+                        Beyond the digital canvas, I am deeply engaged as an activist and researcher in <span class="text-purple-400 font-semibold">Islamic Astronomy (Ilmu Falak)</span>, applying rigorous observation and calculation to understand celestial mechanics, lunar phases, and the Hijri calendar.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white transition"><i class="ph ph-instagram-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white transition"><i class="ph ph-youtube-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 hover:text-white transition"><i class="ph ph-linkedin-logo text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-panel p-6 text-center reveal" style="transition-delay: 0.1s;">
+                        <i class="ph ph-bezier-curve text-4xl text-cyan-400 mb-3 block"></i>
+                        <h4 class="font-poppins font-medium text-white text-sm">Visual Design</h4>
+                    </div>
+                    <div class="glass-panel p-6 text-center reveal" style="transition-delay: 0.2s;">
+                        <i class="ph ph-video-camera text-4xl text-purple-400 mb-3 block"></i>
+                        <h4 class="font-poppins font-medium text-white text-sm">Videography & Photo</h4>
+                    </div>
+                    <div class="glass-panel p-6 text-center reveal" style="transition-delay: 0.3s;">
+                        <i class="ph ph-planet text-4xl text-cyan-400 mb-3 block"></i>
+                        <h4 class="font-poppins font-medium text-white text-sm">Ilmu Falak</h4>
+                    </div>
+                    <div class="glass-panel p-6 text-center reveal" style="transition-delay: 0.4s;">
+                        <i class="ph ph-code text-4xl text-purple-400 mb-3 block"></i>
+                        <h4 class="font-poppins font-medium text-white text-sm">Creative Tech</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-24 relative bg-black/20">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-orbitron text-3xl md:text-4xl font-bold text-white mb-2">Core <span class="text-purple-400">Expertise</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Skill List -->
+                <div class="space-y-6">
+                    <div class="reveal skill-item" data-progress="95">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-poppins text-sm font-medium text-white">Graphic Design</span>
+                            <span class="text-cyan-400 text-sm">95%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill bg-cyan-400 text-cyan-400"></div></div>
+                    </div>
+                    
+                    <div class="reveal skill-item" data-progress="90">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-poppins text-sm font-medium text-white">Photography & Videography</span>
+                            <span class="text-cyan-400 text-sm">90%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill bg-cyan-400 text-cyan-400"></div></div>
+                    </div>
+
+                    <div class="reveal skill-item" data-progress="85">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-poppins text-sm font-medium text-white">Video Editing</span>
+                            <span class="text-cyan-400 text-sm">85%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill bg-cyan-400 text-cyan-400"></div></div>
+                    </div>
+
+                    <div class="reveal skill-item" data-progress="92">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-poppins text-sm font-medium text-white">Islamic Astronomy (Ilmu Falak)</span>
+                            <span class="text-purple-400 text-sm">92%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill bg-purple-400 text-purple-400"></div></div>
+                    </div>
+                </div>
+
+                <!-- Tools Badges -->
+                <div class="glass-panel p-8 reveal flex flex-col justify-center">
+                    <h3 class="font-orbitron text-xl text-white mb-6">Software & Instruments</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-sm font-poppins flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" class="w-4 h-4" alt="PS"> Photoshop</span>
+                        <span class="px-4 py-2 rounded-full border border-purple-400/30 bg-purple-400/10 text-sm font-poppins flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" class="w-4 h-4" alt="PR"> Premiere Pro</span>
+                        <span class="px-4 py-2 rounded-full border border-purple-400/30 bg-purple-400/10 text-sm font-poppins flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg" class="w-4 h-4" alt="AE"> After Effects</span>
+                        <span class="px-4 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-sm font-poppins flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg" class="w-4 h-4" alt="LR"> Lightroom</span>
+                        <span class="px-4 py-2 rounded-full border border-blue-400/30 bg-blue-400/10 text-sm font-poppins flex items-center gap-2"><i class="ph-fill ph-paint-brush text-blue-400"></i> Canva</span>
+                        <span class="px-4 py-2 rounded-full border border-yellow-400/30 bg-yellow-400/10 text-sm font-poppins flex items-center gap-2"><i class="ph-fill ph-file-py text-yellow-400"></i> Python</span>
+                        <span class="px-4 py-2 rounded-full border border-slate-400/30 bg-slate-400/10 text-sm font-poppins flex items-center gap-2"><i class="ph-fill ph-telescope text-slate-300"></i> Astro Tools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-orbitron text-3xl md:text-4xl font-bold text-white mb-2">Selected <span class="text-cyan-400">Works</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Filter (Visual only for this demo) -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+                <button class="px-5 py-2 rounded-full glass-panel text-white text-sm hover:border-cyan-400 border-cyan-400 transition">All</button>
+                <button class="px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white hover:border-cyan-400 transition">Design</button>
+                <button class="px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white hover:border-cyan-400 transition">Photo/Video</button>
+                <button class="px-5 py-2 rounded-full glass-panel text-slate-400 text-sm hover:text-white hover:border-purple-400 transition">Ilmu Falak</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="glass-panel overflow-hidden group cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Abstract Design" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
+                            <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Graphic Design</span>
+                            <h3 class="text-white font-poppins font-semibold text-lg">Futuristic Brand Identity</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="glass-panel overflow-hidden group cursor-pointer reveal" style="transition-delay: 0.1s;">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=800&auto=format&fit=crop" alt="Photography" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
+                            <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Photography</span>
+                            <span class="text-white font-poppins font-semibold text-lg">Urban Nightscapes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="glass-panel overflow-hidden group cursor-pointer reveal" style="transition-delay: 0.2s;">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=800&auto=format&fit=crop" alt="Falak" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
+                            <span class="text-purple-400 text-xs font-bold uppercase tracking-wider mb-1">Ilmu Falak</span>
+                            <span class="text-white font-poppins font-semibold text-lg">Lunar Eclipse Observation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="glass-panel overflow-hidden group cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=800&auto=format&fit=crop" alt="Video Editing" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
+                            <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Videography</span>
+                            <span class="text-white font-poppins font-semibold text-lg">Cinematic Tech Reel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="glass-panel overflow-hidden group cursor-pointer reveal" style="transition-delay: 0.1s;">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" alt="Content" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 portfolio-overlay flex flex-col justify-end p-6">
+                            <span class="text-purple-400 text-xs font-bold uppercase tracking-wider mb-1">Digital Content</span>
+                            <span class="text-white font-poppins font-semibold text-lg">Astronomy Educational Series</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="glass-panel overflow-hidden group cursor-pointer reveal flex items-center justify-center p-6" style="transition-delay: 0.2s;">
+                    <div class="text-center">
+                        <i class="ph ph-arrow-circle-right text-5xl text-cyan-400 mb-3 block"></i>
+                        <h3 class="text-white font-poppins font-semibold">View Full Gallery</h3>
+                        <p class="text-xs text-slate-400 mt-2">Explore more projects on Behance / YouTube</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Falak Science Special Section -->
+    <section id="falak" class="py-24 relative overflow-hidden bg-gradient-to-b from-transparent to-[#100524]/50 border-y border-purple-500/10">
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Orbital Animation Graphic -->
+                <div class="w-full lg:w-1/2 flex justify-center reveal">
+                    <div class="orbit-container">
+                        <div class="orbit-center"></div>
+                        <div class="orbit-planet"></div>
+                        <!-- Inner orbit -->
+                        <div class="absolute w-[180px] h-[180px] border border-dashed border-purple-400/30 rounded-full animate-[spin_10s_linear_infinite_reverse]">
+                            <div class="absolute w-[10px] h-[10px] bg-cyan-400 rounded-full top-0 left-[85px] shadow-[0_0_10px_#06b6d4]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-400/30 bg-purple-400/10 text-purple-400 text-xs font-poppins tracking-widest uppercase mb-4">
+                        <i class="ph ph-moon-stars"></i> Specialized Field
+                    </div>
+                    <h2 class="font-orbitron text-3xl md:text-4xl font-bold text-white mb-6">Islamic Astronomy <br><span class="text-purple-400">(Ilmu Falak)</span></h2>
+                    <p class="text-slate-300 mb-8 leading-relaxed">
+                        Dedicated to the observation and calculation of celestial bodies to serve religious and scientific purposes. My work in this field involves modern technology to preserve and advance classical astronomical traditions.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="glass-panel p-4 flex items-start gap-3">
+                            <i class="ph ph-moon text-2xl text-purple-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-poppins font-semibold text-white text-sm">Hilal Observation</h4>
+                                <p class="text-xs text-slate-400 mt-1">Crescent moon sighting analysis.</p>
+                            </div>
+                        </div>
+                        <div class="glass-panel p-4 flex items-start gap-3">
+                            <i class="ph ph-calendar text-2xl text-cyan-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-poppins font-semibold text-white text-sm">Hijri Calendar</h4>
+                                <p class="text-xs text-slate-400 mt-1">Systematic studies and conversions.</p>
+                            </div>
+                        </div>
+                        <div class="glass-panel p-4 flex items-start gap-3">
+                            <i class="ph ph-math-operations text-2xl text-cyan-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-poppins font-semibold text-white text-sm">Astro Calculations</h4>
+                                <p class="text-xs text-slate-400 mt-1">Algorithmic prayer time computations.</p>
+                            </div>
+                        </div>
+                        <div class="glass-panel p-4 flex items-start gap-3">
+                            <i class="ph ph-books text-2xl text-purple-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-poppins font-semibold text-white text-sm">Research & Edu</h4>
+                                <p class="text-xs text-slate-400 mt-1">Spreading knowledge of Falak.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-orbitron text-3xl md:text-4xl font-bold text-white mb-2">Initiate <span class="text-cyan-400">Transmission</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto glass-panel p-8 md:p-12 reveal">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="font-poppins text-2xl font-semibold text-white mb-6">Let's Collaborate</h3>
+                        <p class="text-slate-400 mb-8 text-sm">Whether it's a creative digital project, media production, or discussions regarding Ilmu Falak, my inbox is always open.</p>
+                        
+                        <div class="space-y-6">
+                            <a href="mailto:contact@example.com" class="flex items-center gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-white transition">
+                                    <i class="ph ph-envelope-simple text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-slate-400 font-poppins uppercase">Email</span>
+                                    <span class="text-white font-medium group-hover:text-cyan-400 transition">mauludyzahron.24@gmail.com</span>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="flex items-center gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-purple-400/10 border border-purple-400/30 flex items-center justify-center text-purple-400 group-hover:bg-purple-400 group-hover:text-white transition">
+                                    <i class="ph ph-instagram-logo text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-slate-400 font-poppins uppercase">Instagram</span>
+                                    <span class="text-white font-medium group-hover:text-purple-400 transition">@mldyzhrn_</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <form class="space-y-6" onsubmit="event.preventDefault();">
+                        <div>
+                            <input type="text" placeholder="Your Name" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500">
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="4" class="w-full bg-transparent border-b border-white/20 pb-3 text-white focus:outline-none focus:border-cyan-400 transition font-inter text-sm placeholder:text-slate-500 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="btn-neon btn-neon-cyan w-full py-3 rounded-lg font-poppins font-medium">
+                            Send Message <i class="ph ph-paper-plane-right ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-8 text-center bg-black/40">
+        <p class="text-slate-500 text-sm font-poppins">
+            &copy; 2026 Achmad Mauludy Zahron. Designed with <i class="ph-fill ph-heart text-cyan-400 mx-1"></i> bridging Science & Art.
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // 1. Reveal Animations on Scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Trigger skill bar animations if within view
+                    if(entry.target.classList.contains('skill-item')) {
+                        const bar = entry.target.querySelector('.progress-fill');
+                        const progress = entry.target.getAttribute('data-progress');
+                        setTimeout(() => {
+                            bar.style.width = progress + '%';
+                        }, 300);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 2. Interactive Canvas Background (Network/Stars)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 1.5 + 0.5;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(6, 182, 212, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Draw connecting lines
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(168, 85, 247, ${0.2 - dist/500})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        // Start animation immediately
+        animate();
+    </script>
+</body>
+</html>
