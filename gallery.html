@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMZ Full Gallery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        brandBg: '#070a13' // <-- UBAH WARNA BACKGROUND UTAMA DI SINI
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070a13; /* <-- UBAH WARNA BACKGROUND DI SINI */
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+
+        /* Background Bintang & Gradient */
+        .bg-space {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bg-space-gradient {
+            position: absolute;
+            inset: 0;
+            opacity: 0.3;
+            /* <-- UBAH GRADIENT BACKGROUND DI SINI JIKA PERLU */
+            background-image: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #070a13 100%); 
+        }
+        .bg-space-stars {
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)), 
+                radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)), 
+                radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0,0,0,0)), 
+                radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)), 
+                radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)), 
+                radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        .hidden-item { display: none !important; }
+        
+        /* Tab Aktif */
+        .tab-active {
+            border-color: #06b6d4; /* cyan-500 */
+            background-color: rgba(6, 182, 212, 0.1);
+            color: #67e8f9; /* cyan-300 */
+            box-shadow: 0 0 15px rgba(0,240,255,0.2);
+        }
+        .tab-inactive {
+            border-color: #374151; /* gray-700 */
+            background-color: rgba(17, 24, 39, 0.5); /* gray-900/50 */
+            color: #9ca3af; /* gray-400 */
+        }
+        .tab-inactive:hover {
+            border-color: #6b7280; /* gray-500 */
+            color: white;
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-white relative">
+
+    <!-- Background -->
+    <div class="bg-space">
+        <div class="bg-space-gradient"></div>
+        <div class="bg-space-stars"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="relative z-10 w-full px-6 py-6 md:px-12 flex justify-between items-center border-b border-gray-800/50 bg-brandBg/80 backdrop-blur-md sticky top-0">
+        <div class="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200 font-orbitron">
+            A.M.Z.
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium">
+            <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a> <!-- Link kembali ke portofolio -->
+            <a href="#" class="hover:text-cyan-400 transition-colors">Expertise</a>
+            <a href="#" class="text-cyan-400 transition-colors">Portfolio</a>
+            <a href="#" class="hover:text-cyan-400 transition-colors">Ilmu Falak</a>
+        </div>
+        <div class="md:hidden">
+            <i data-lucide="menu" class="w-6 h-6 text-cyan-400"></i>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-20">
+        
+        <!-- Header -->
+        <div class="text-center mb-16 space-y-4">
+            <span class="inline-block border border-cyan-800 bg-cyan-950/30 text-cyan-400 text-xs font-semibold px-4 py-1.5 rounded-full tracking-widest uppercase">
+                Explore My Universe
+            </span>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+                Full <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Gallery</span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto pt-2">
+                Eksplorasi karya visual, desain kreatif, produksi video, dan instrumen perhitungan Astronomi Islam.
+            </p>
+        </div>
+
+        <!-- Tab Filters -->
+        <div id="tab-container" class="flex flex-wrap justify-center gap-3 mb-12">
+            <!-- Dibuat via JS -->
+        </div>
+
+        <!-- Gallery Biasa (Design, Photos, Video) -->
+        <div id="regular-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+            <!-- Diisi via JS -->
+        </div>
+
+        <!-- Astronomi Islam Cards -->
+        <div id="astronomi-gallery" class="mt-16 animate-fade-in">
+            <div id="astronomi-title" class="flex items-center justify-between mb-8 border-b border-gray-800 pb-4">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <i data-lucide="moon" class="text-cyan-400 w-6 h-6"></i>
+                    Astronomi Islam (Ilmu Falak)
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-[#0b101e] border border-gray-800 hover:border-cyan-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(0,240,255,0.1)] flex flex-col h-full">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6 border border-cyan-500/20 group-hover:bg-cyan-500/20 transition-colors">
+                        <i data-lucide="compass" class="text-cyan-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">Arah Kiblat</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                        Kalkulasi presisi arah kiblat (Qibla Direction) untuk berbagai lokasi berdasarkan perhitungan astronomi bola.
+                    </p>
+                    <div class="mt-auto">
+                        <!-- LINK ARAH KIBLAT DI SINI -->
+                        <a href="LINK_ARAH_KIBLAT_DISINI" target="_blank" class="w-full flex items-center justify-center gap-2 bg-transparent border border-cyan-700 text-cyan-400 py-3 rounded-xl font-medium hover:bg-cyan-950 hover:border-cyan-400 transition-all">
+                            Buka Kalkulator <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-[#0b101e] border border-gray-800 hover:border-purple-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(168,85,247,0.1)] flex flex-col h-full">
+                    <div class="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/20 group-hover:bg-purple-500/20 transition-colors">
+                        <i data-lucide="clock" class="text-purple-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Waktu Salat</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                        Jadwal waktu salat akurat berdasarkan pergerakan matahari tahunan, mencakup fajar, syuruq, zawal, ashar, maghrib.
+                    </p>
+                    <div class="mt-auto">
+                        <!-- LINK WAKTU SALAT DI SINI -->
+                        <a href="LINK_WAKTU_SALAT_DISINI" target="_blank" class="w-full flex items-center justify-center gap-2 bg-transparent border border-purple-700 text-purple-400 py-3 rounded-xl font-medium hover:bg-purple-900/40 hover:border-purple-400 transition-all">
+                            Lihat Jadwal <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-[#0b101e] border border-gray-800 hover:border-blue-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] flex flex-col h-full">
+                    <div class="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
+                        <i data-lucide="moon" class="text-blue-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">Awal Bulan Qomariyah</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                        Analisis visibilitas hilal (Rukyatul Hilal) dan perhitungan hisab (Hijri Calendar) secara saintifik.
+                    </p>
+                    <div class="mt-auto">
+                        <!-- LINK AWAL BULAN DI SINI -->
+                        <a href="LINK_AWAL_BULAN_DISINI" target="_blank" class="w-full flex items-center justify-center gap-2 bg-transparent border border-blue-700 text-blue-400 py-3 rounded-xl font-medium hover:bg-blue-900/40 hover:border-blue-400 transition-all">
+                            Cek Penanggalan <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-[#0b101e] border border-gray-800 hover:border-emerald-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] flex flex-col h-full">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors">
+                        <i data-lucide="book-open" class="text-emerald-400 w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">Research & Edu</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                        Kumpulan artikel, jurnal, dan modul pembelajaran warisan ilmu astronomi Islam.
+                    </p>
+                    <div class="mt-auto">
+                        <!-- LINK RESEARCH DI SINI -->
+                        <a href="LINK_RESEARCH_DISINI" target="_blank" class="w-full flex items-center justify-center gap-2 bg-transparent border border-emerald-700 text-emerald-400 py-3 rounded-xl font-medium hover:bg-emerald-900/40 hover:border-emerald-400 transition-all">
+                            Akses Materi <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Detail Gallery -->
+    <div id="gallery-modal" class="fixed inset-0 z-50 items-center justify-center p-4 md:p-6 bg-[#070a13]/90 backdrop-blur-md hidden">
+        <div class="relative bg-[#0b101e] border border-gray-800 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col md:flex-row shadow-[0_0_50px_rgba(0,240,255,0.05)] animate-fade-in">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 z-10 bg-black/50 hover:bg-red-500 text-gray-300 hover:text-white rounded-full p-2 transition-all border border-gray-700 hover:border-red-500">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="w-full md:w-3/5 h-64 md:h-auto relative bg-black">
+                <img id="modal-img" src="" alt="Gallery Image" class="w-full h-full object-cover opacity-90" />
+                <div id="modal-video-overlay" class="absolute inset-0 items-center justify-center bg-black/30 hidden">
+                    <div class="w-20 h-20 rounded-full bg-cyan-500/20 backdrop-blur-sm border border-cyan-500/50 flex items-center justify-center cursor-pointer hover:bg-cyan-500/40 hover:scale-110 transition-all">
+                        <i data-lucide="play-circle" class="text-cyan-400 w-10 h-10 ml-1"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-2/5 p-6 md:p-10 flex flex-col overflow-y-auto">
+                <div class="flex items-center gap-2 mb-4 text-cyan-400">
+                    <div id="modal-icon"></div>
+                    <span id="modal-type" class="text-sm font-semibold uppercase tracking-widest text-cyan-400"></span>
+                </div>
+                
+                <h2 id="modal-title" class="text-3xl md:text-4xl font-bold text-white mb-6"></h2>
+                <div class="w-12 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mb-6"></div>
+                <p id="modal-desc" class="text-gray-400 leading-relaxed mb-8 text-sm md:text-base"></p>
+                
+                <div class="mt-auto pt-6">
+                    <a href="#" id="modal-link" target="_blank" class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-600 to-cyan-800 text-white py-3 md:py-4 rounded-xl font-semibold hover:from-cyan-500 hover:to-cyan-700 transition-all shadow-lg shadow-cyan-500/20">
+                        <span id="modal-btn-text">Lihat Resolusi Penuh</span> <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        const categories = ['Semua', 'Design', 'Photos', 'Video', 'Astronomi Islam'];
+        
+        const galleryItems = [
+            { id: 1, type: 'Design', title: 'UI/UX Mobile App', img: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&w=1200&q=80', description: 'Desain antarmuka pengguna (UI) dan pengalaman pengguna (UX) untuk aplikasi mobile modern.' },
+            { id: 2, type: 'Design', title: 'Brand Identity', img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80', description: 'Eksplorasi visual dan pedoman merek komprehensif untuk perusahaan teknologi.' },
+            { id: 3, type: 'Photos', title: 'Milky Way Astrophotography', img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80', description: 'Tangkapan keindahan galaksi Bima Sakti dari daerah minim polusi cahaya.' },
+            { id: 4, type: 'Photos', title: 'Urban Architecture', img: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1200&q=80', description: 'Sudut pandang simetris dan geometris dari gedung-gedung pencakar langit di pusat kota metropolitan.' },
+            { id: 5, type: 'Video', title: 'Cinematic Travel Vlog', img: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80', isVideo: true, description: 'Dokumentasi perjalanan sinematik yang menangkap esensi dan budaya lokal.' },
+            { id: 6, type: 'Video', title: 'Event Documentation', img: 'https://images.unsplash.com/photo-1516280440504-629b7654d243?auto=format&fit=crop&w=1200&q=80', isVideo: true, description: 'Rekaman momen-momen penting dari acara pameran seni berskala besar.' },
+        ];
+
+        let activeTab = 'Semua';
+
+        // Render Tabs
+        const tabContainer = document.getElementById('tab-container');
+        function renderTabs() {
+            tabContainer.innerHTML = '';
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${activeTab === cat ? 'tab-active' : 'tab-inactive'}`;
+                btn.innerText = cat;
+                btn.onclick = () => {
+                    activeTab = cat;
+                    renderTabs();
+                    renderContent();
+                };
+                tabContainer.appendChild(btn);
+            });
+        }
+
+        // Render Gallery Items
+        const regularGallery = document.getElementById('regular-gallery');
+        const astronomiGallery = document.getElementById('astronomi-gallery');
+        const astronomiTitle = document.getElementById('astronomi-title');
+
+        function renderContent() {
+            // Visibility Logic
+            if (activeTab === 'Astronomi Islam') {
+                regularGallery.classList.add('hidden-item');
+                astronomiGallery.classList.remove('hidden-item');
+                astronomiTitle.classList.add('hidden-item'); // hide title if it's the only tab open
+            } else if (activeTab === 'Semua') {
+                regularGallery.classList.remove('hidden-item');
+                astronomiGallery.classList.remove('hidden-item');
+                astronomiTitle.classList.remove('hidden-item');
+            } else {
+                regularGallery.classList.remove('hidden-item');
+                astronomiGallery.classList.add('hidden-item');
+            }
+
+            // Render Regular Gallery Images
+            regularGallery.innerHTML = '';
+            const filtered = activeTab === 'Semua' ? galleryItems : galleryItems.filter(i => i.type === activeTab);
+            
+            filtered.forEach(item => {
+                let iconName = item.type === 'Design' ? 'pen-tool' : item.type === 'Photos' ? 'image' : 'play-circle';
+                let iconColor = item.type === 'Design' ? 'text-purple-400' : item.type === 'Photos' ? 'text-cyan-400' : 'text-red-400';
+                
+                let playOverlay = item.isVideo ? `
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                            <i data-lucide="play-circle" class="text-white w-8 h-8 ml-1"></i>
+                        </div>
+                    </div>` : '';
+
+                const div = document.createElement('div');
+                div.className = "group relative rounded-xl overflow-hidden bg-gray-900 border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 aspect-[4/3] cursor-pointer";
+                div.onclick = () => openModal(item);
+                
+                div.innerHTML = `
+                    <img src="${item.img}" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="${iconName}" class="${iconColor} w-4 h-4"></i>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-gray-300">${item.type}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">${item.title}</h3>
+                    </div>
+                    ${playOverlay}
+                `;
+                regularGallery.appendChild(div);
+            });
+            lucide.createIcons();
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('gallery-modal');
+        function openModal(item) {
+            document.getElementById('modal-img').src = item.img;
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-desc').innerText = item.description;
+            document.getElementById('modal-type').innerText = item.type;
+            
+            let iconName = item.type === 'Design' ? 'pen-tool' : item.type === 'Photos' ? 'image' : 'play-circle';
+            let iconColor = item.type === 'Design' ? 'text-purple-400' : item.type === 'Photos' ? 'text-cyan-400' : 'text-red-400';
+            document.getElementById('modal-icon').innerHTML = `<i data-lucide="${iconName}" class="${iconColor} w-5 h-5"></i>`;
+            
+            if (item.isVideo) {
+                document.getElementById('modal-video-overlay').classList.remove('hidden');
+                document.getElementById('modal-video-overlay').classList.add('flex');
+                document.getElementById('modal-btn-text').innerText = "Tonton Video";
+            } else {
+                document.getElementById('modal-video-overlay').classList.add('hidden');
+                document.getElementById('modal-video-overlay').classList.remove('flex');
+                document.getElementById('modal-btn-text').innerText = "Lihat Resolusi Penuh";
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Init
+        renderTabs();
+        renderContent();
+    </script>
+</body>
+</html>
