@@ -292,10 +292,10 @@
                 <!-- Skill List -->
                 <div class="space-y-6">
                     <!-- 📝 CARA UBAH BAR PERSENTASE: Ubah angka di data-progress="95" dan pada teks "95%" -->
-                    <div class="reveal skill-item" data-progress="95">
+                    <div class="reveal skill-item" data-progress="85">
                         <div class="flex justify-between mb-1">
                             <span class="font-poppins text-sm font-medium text-white">Graphic Design</span>
-                            <span class="text-cyan-400 text-sm">95%</span>
+                            <span class="text-cyan-400 text-sm">85%</span>
                         </div>
                         <div class="progress-track"><div class="progress-fill bg-cyan-400 text-cyan-400"></div></div>
                     </div>
@@ -423,14 +423,14 @@
                 </div>
 
                 <!-- Portfolio Item 6 (Link to full gallery) -->
-                <!-- 📝 CARA UBAH: Anda bisa jadikan ini link eksternal dengan membungkus tag a href="..." di dalamnya -->
-                <div class="portfolio-card glass-panel overflow-hidden group cursor-pointer reveal flex items-center justify-center p-6 transition-all duration-500" data-category="all" style="transition-delay: 0.2s;">
+                <!-- 📝 CARA UBAH LINK GALLERY: Ganti href="#" dengan link portofolio eksternal Anda (misal: Behance, YouTube, atau folder Google Drive). Atribut target="_blank" akan membuka link di tab/jendela baru. -->
+                <a href="#" target="_blank" class="portfolio-card glass-panel overflow-hidden group cursor-pointer reveal flex items-center justify-center p-6 transition-all duration-500 hover:border-cyan-400 hover:bg-cyan-400/5 hover:-translate-y-2" data-category="all" style="transition-delay: 0.2s;">
                     <div class="text-center">
-                        <i class="ph ph-arrow-circle-right text-5xl text-cyan-400 mb-3 block"></i>
+                        <i class="ph ph-arrow-circle-right text-5xl text-cyan-400 mb-3 block group-hover:translate-x-2 transition-transform duration-300"></i>
                         <h3 class="text-white font-poppins font-semibold">View Full Gallery</h3>
                         <p class="text-xs text-slate-400 mt-2">Explore more projects on Behance / YouTube</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -463,35 +463,45 @@
                         Dedicated to the observation and calculation of celestial bodies to serve religious and scientific purposes. My work in this field involves modern technology to preserve and advance classical astronomical traditions.
                     </p>
                     
+                    <!-- 📝 CARA UBAH ACTION FALAK: Ganti tulisan href="#" di bawah ini dengan link tujuan Anda. (Contoh: link Google Drive berisi file PDF / Excel perhitungan Falak, dsb). -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="glass-panel p-4 flex items-start gap-3">
-                            <i class="ph ph-moon text-2xl text-purple-400 mt-1"></i>
+                        
+                        <!-- Card 1: Hilal Observation -->
+                        <a href="#" target="_blank" class="glass-panel p-4 flex items-start gap-3 hover:border-purple-400 hover:bg-purple-400/10 transition cursor-pointer group hover:-translate-y-1">
+                            <i class="ph ph-moon text-2xl text-purple-400 mt-1 group-hover:scale-110 transition-transform"></i>
                             <div>
-                                <h4 class="font-poppins font-semibold text-white text-sm">Hilal Observation</h4>
+                                <h4 class="font-poppins font-semibold text-white text-sm group-hover:text-purple-400 transition-colors">Hilal Observation</h4>
                                 <p class="text-xs text-slate-400 mt-1">Crescent moon sighting analysis.</p>
                             </div>
-                        </div>
-                        <div class="glass-panel p-4 flex items-start gap-3">
-                            <i class="ph ph-calendar text-2xl text-cyan-400 mt-1"></i>
+                        </a>
+
+                        <!-- Card 2: Hijri Calendar -->
+                        <a href="#" target="_blank" class="glass-panel p-4 flex items-start gap-3 hover:border-cyan-400 hover:bg-cyan-400/10 transition cursor-pointer group hover:-translate-y-1">
+                            <i class="ph ph-calendar text-2xl text-cyan-400 mt-1 group-hover:scale-110 transition-transform"></i>
                             <div>
-                                <h4 class="font-poppins font-semibold text-white text-sm">Hijri Calendar</h4>
+                                <h4 class="font-poppins font-semibold text-white text-sm group-hover:text-cyan-400 transition-colors">Hijri Calendar</h4>
                                 <p class="text-xs text-slate-400 mt-1">Systematic studies and conversions.</p>
                             </div>
-                        </div>
-                        <div class="glass-panel p-4 flex items-start gap-3">
-                            <i class="ph ph-math-operations text-2xl text-cyan-400 mt-1"></i>
+                        </a>
+
+                        <!-- Card 3: Astro Calculations -->
+                        <a href="#" target="_blank" class="glass-panel p-4 flex items-start gap-3 hover:border-cyan-400 hover:bg-cyan-400/10 transition cursor-pointer group hover:-translate-y-1">
+                            <i class="ph ph-math-operations text-2xl text-cyan-400 mt-1 group-hover:scale-110 transition-transform"></i>
                             <div>
-                                <h4 class="font-poppins font-semibold text-white text-sm">Astro Calculations</h4>
+                                <h4 class="font-poppins font-semibold text-white text-sm group-hover:text-cyan-400 transition-colors">Astro Calculations</h4>
                                 <p class="text-xs text-slate-400 mt-1">Algorithmic prayer time computations.</p>
                             </div>
-                        </div>
-                        <div class="glass-panel p-4 flex items-start gap-3">
-                            <i class="ph ph-books text-2xl text-purple-400 mt-1"></i>
+                        </a>
+
+                        <!-- Card 4: Research & Edu -->
+                        <a href="#" target="_blank" class="glass-panel p-4 flex items-start gap-3 hover:border-purple-400 hover:bg-purple-400/10 transition cursor-pointer group hover:-translate-y-1">
+                            <i class="ph ph-books text-2xl text-purple-400 mt-1 group-hover:scale-110 transition-transform"></i>
                             <div>
-                                <h4 class="font-poppins font-semibold text-white text-sm">Research & Edu</h4>
+                                <h4 class="font-poppins font-semibold text-white text-sm group-hover:text-purple-400 transition-colors">Research & Edu</h4>
                                 <p class="text-xs text-slate-400 mt-1">Spreading knowledge of Falak.</p>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -515,7 +525,7 @@
                         
                         <div class="space-y-6">
                             <!-- 📝 CARA UBAH EMAIL: Ganti "contact@example.com" dan "hello@achmadzahron.com" -->
-                            <a href="mailto:hello@achmadzahron.com" class="flex items-center gap-4 group">
+                            <a href="mailto:mauludyzahron.24@gmail.com" class="flex items-center gap-4 group">
                                 <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-white transition">
                                     <i class="ph ph-envelope-simple text-xl"></i>
                                 </div>
@@ -526,7 +536,7 @@
                             </a>
                             
                             <!-- 📝 CARA UBAH IG: Ganti href="#" dengan link IG dan "@am.zahron" dengan username -->
-                            <a href="https://instagram.com/am.zahron" target="_blank" class="flex items-center gap-4 group">
+                            <a href="https://instagram.com/mldyzhrn_" target="_blank" class="flex items-center gap-4 group">
                                 <div class="w-12 h-12 rounded-full bg-purple-400/10 border border-purple-400/30 flex items-center justify-center text-purple-400 group-hover:bg-purple-400 group-hover:text-white transition">
                                     <i class="ph ph-instagram-logo text-xl"></i>
                                 </div>
@@ -539,11 +549,9 @@
                     </div>
 
                     <!-- Contact Form -->
-                    <!-- 📝 CARA UBAH FUNGSI FORM (PENTING!):
-                         Karena GitHub Pages adalah web statis, Anda perlu menggunakan layanan seperti Formspree agar form ini bisa mengirim email ke Anda.
-                         1. Daftar gratis di https://formspree.io/
-                         2. Buat project/form baru, lalu copy link "Endpoint" yang diberikan.
-                         3. Ganti URL "https://formspree.io/f/XXXXXXX" di bawah ini dengan link dari Formspree Anda.
+                    <!-- 📝 CARA MENGAKTIFKAN FORM (MASUKKAN LINK FORMSPREE ANDA DI SINI):
+                         Ganti tulisan "PASTE_LINK_FORMSPREE_ANDA_DI_SINI" pada bagian action="..." di bawah ini 
+                         dengan link endpoint Formspree Anda (contoh: https://formspree.io/f/mrbpzzzz).
                     -->
                     <form action="https://formspree.io/f/xqewyllv" method="POST" class="space-y-6">
                         <div>
