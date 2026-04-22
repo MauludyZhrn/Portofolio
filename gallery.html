@@ -67,6 +67,11 @@
         .orb-2 { bottom: -10%; right: -10%; width: 600px; height: 600px; background: rgba(168, 85, 247, 0.3); animation-delay: -5s; }
         .orb-3 { top: 40%; left: 40%; width: 400px; height: 400px; background: rgba(59, 130, 246, 0.3); animation-delay: -10s; }
 
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
         /* Animasi */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -93,6 +98,19 @@
             border-color: #6b7280; /* gray-500 */
             color: white;
         }
+        /* Animasi Spin Modal Astronomi */
+        .animate-spin-slow {
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
     </style>
 </head>
 <body class="selection:bg-cyan-500 selection:text-white relative">
@@ -154,71 +172,71 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-[#0b101e] border border-gray-800 hover:border-cyan-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(0,240,255,0.1)] flex flex-col h-full">
-                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6 border border-cyan-500/20 group-hover:bg-cyan-500/20 transition-colors">
+                <!-- Card 1: Arah Kiblat (Glassmorphism) -->
+                <div class="bg-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-cyan-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none"></div>
+                    <div class="relative z-10 w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6 border border-cyan-500/20 group-hover:bg-cyan-500/20 transition-colors">
                         <i data-lucide="compass" class="text-cyan-400 w-7 h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">Arah Kiblat</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                    <h3 class="relative z-10 text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">Arah Kiblat</h3>
+                    <p class="relative z-10 text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
                         Kalkulasi presisi arah kiblat (Qibla Direction) untuk berbagai lokasi berdasarkan perhitungan astronomi bola.
                     </p>
-                    <div class="mt-auto">
-                        <!-- LINK ARAH KIBLAT DI SINI -->
-                        <a href="LINK_ARAH_KIBLAT_DISINI" target="_blank" class="w-full flex items-center justify-center gap-2 bg-transparent border border-cyan-700 text-cyan-400 py-3 rounded-xl font-medium hover:bg-cyan-950 hover:border-cyan-400 transition-all">
+                    <div class="relative z-10 mt-auto">
+                        <button onclick="openAstronomiModal('kiblat')" class="w-full flex items-center justify-center gap-2 bg-white/[0.05] border border-white/10 text-cyan-400 py-3 rounded-xl font-medium hover:bg-cyan-500/20 hover:border-cyan-400 transition-all">
                             Buka Kalkulator <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-[#0b101e] border border-gray-800 hover:border-purple-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(168,85,247,0.1)] flex flex-col h-full">
-                    <div class="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/20 group-hover:bg-purple-500/20 transition-colors">
+                <!-- Card 2: Waktu Salat (Glassmorphism) -->
+                <div class="bg-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-purple-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none"></div>
+                    <div class="relative z-10 w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 border border-purple-500/20 group-hover:bg-purple-500/20 transition-colors">
                         <i data-lucide="clock" class="text-purple-400 w-7 h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Waktu Salat</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                    <h3 class="relative z-10 text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Waktu Salat</h3>
+                    <p class="relative z-10 text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
                         Jadwal waktu salat akurat berdasarkan pergerakan matahari tahunan, mencakup fajar, syuruq, zawal, ashar, maghrib.
                     </p>
-                    <div class="mt-auto">
-                        <!-- LINK WAKTU SALAT DI SINI -->
-                        <a href="LINK_WAKTU_SALAT_DISINI" target="_blank" class="w-full flex items-center justify-center gap-2 bg-transparent border border-purple-700 text-purple-400 py-3 rounded-xl font-medium hover:bg-purple-900/40 hover:border-purple-400 transition-all">
+                    <div class="relative z-10 mt-auto">
+                        <button onclick="openAstronomiModal('salat')" class="w-full flex items-center justify-center gap-2 bg-white/[0.05] border border-white/10 text-purple-400 py-3 rounded-xl font-medium hover:bg-purple-500/20 hover:border-purple-400 transition-all">
                             Lihat Jadwal <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-[#0b101e] border border-gray-800 hover:border-blue-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] flex flex-col h-full">
-                    <div class="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
+                <!-- Card 3: Awal Bulan Qomariyah (Glassmorphism) -->
+                <div class="bg-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-blue-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none"></div>
+                    <div class="relative z-10 w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
                         <i data-lucide="moon" class="text-blue-400 w-7 h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">Awal Bulan Qomariyah</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                    <h3 class="relative z-10 text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">Awal Bulan Qomariyah</h3>
+                    <p class="relative z-10 text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
                         Analisis visibilitas hilal (Rukyatul Hilal) dan perhitungan hisab (Hijri Calendar) secara saintifik.
                     </p>
-                    <div class="mt-auto">
-                        <!-- LINK AWAL BULAN DI SINI -->
-                        <a href="LINK_AWAL_BULAN_DISINI" target="_blank" class="w-full flex items-center justify-center gap-2 bg-transparent border border-blue-700 text-blue-400 py-3 rounded-xl font-medium hover:bg-blue-900/40 hover:border-blue-400 transition-all">
+                    <div class="relative z-10 mt-auto">
+                        <button onclick="openAstronomiModal('hilal')" class="w-full flex items-center justify-center gap-2 bg-white/[0.05] border border-white/10 text-blue-400 py-3 rounded-xl font-medium hover:bg-blue-500/20 hover:border-blue-400 transition-all">
                             Cek Penanggalan <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="bg-[#0b101e] border border-gray-800 hover:border-emerald-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] flex flex-col h-full">
-                    <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors">
+                <!-- Card 4: Research & Edu (Glassmorphism) -->
+                <div class="bg-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-emerald-500/50 rounded-2xl p-6 md:p-8 transition-all duration-300 group hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none"></div>
+                    <div class="relative z-10 w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors">
                         <i data-lucide="book-open" class="text-emerald-400 w-7 h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">Research & Edu</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                    <h3 class="relative z-10 text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">Research & Edu</h3>
+                    <p class="relative z-10 text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
                         Kumpulan artikel, jurnal, dan modul pembelajaran warisan ilmu astronomi Islam.
                     </p>
-                    <div class="mt-auto">
-                        <!-- LINK RESEARCH DI SINI -->
-                        <a href="LINK_RESEARCH_DISINI" target="_blank" class="w-full flex items-center justify-center gap-2 bg-transparent border border-emerald-700 text-emerald-400 py-3 rounded-xl font-medium hover:bg-emerald-900/40 hover:border-emerald-400 transition-all">
+                    <div class="relative z-10 mt-auto">
+                        <button onclick="openAstronomiModal('edu')" class="w-full flex items-center justify-center gap-2 bg-white/[0.05] border border-white/10 text-emerald-400 py-3 rounded-xl font-medium hover:bg-emerald-500/20 hover:border-emerald-400 transition-all">
                             Akses Materi <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -261,6 +279,37 @@
         </div>
     </div>
 
+    <!-- Modal Astronomi Islam -->
+    <div id="astronomi-modal" class="fixed inset-0 z-[60] items-center justify-center p-4 bg-[#070a13]/80 backdrop-blur-md hidden">
+        <div id="astro-modal-box" class="relative bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-2xl max-w-md w-full p-8 shadow-2xl text-center transform scale-100 transition-all animate-fade-in">
+            
+            <button onclick="closeAstronomiModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div id="astro-modal-icon-wrapper" class="w-20 h-20 mx-auto rounded-2xl flex items-center justify-center mb-6">
+                <i id="astro-modal-icon" data-lucide="settings" class="w-10 h-10 animate-spin-slow"></i>
+            </div>
+            
+            <h3 id="astro-modal-title" class="text-2xl font-bold text-white mb-2">Memuat...</h3>
+            
+            <div class="inline-block px-3 py-1 bg-black/40 border border-white/10 rounded-md mb-6">
+                <span id="astro-modal-badge" class="text-xs font-mono tracking-widest uppercase">
+                    MENYIAPKAN MODUL...
+                </span>
+            </div>
+            
+            <p id="astro-modal-desc" class="text-gray-400 text-sm leading-relaxed mb-8">
+                Sedang memuat data...
+            </p>
+            
+            <!-- TARUH LINK DI BAGIAN JS DI BAWAH, ATAU BISA JUGA DIUBAH MANUAL DI SINI NANTINYA -->
+            <a id="astro-modal-link" href="#" target="_blank" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold transition-all">
+                Akses Sekarang <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </div>
+
     <!-- JS Logic -->
     <script>
         const categories = ['Semua', 'Design', 'Photos', 'Video', 'Astronomi Islam'];
@@ -275,6 +324,26 @@
         ];
 
         let activeTab = 'Semua';
+
+        // 1. Fitur Reveal Animation saat di-scroll ke bawah
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Memicu animasi bar skill jika elemen tersebut muncul di layar
+                    if(entry.target.classList.contains('skill-item')) {
+                        const bar = entry.target.querySelector('.progress-fill');
+                        const progress = entry.target.getAttribute('data-progress');
+                        setTimeout(() => {
+                            bar.style.width = progress + '%';
+                        }, 300);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
 
         // Render Tabs
         const tabContainer = document.getElementById('tab-container');
@@ -380,6 +449,137 @@
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
+
+        // Logic Modal Astronomi Islam
+        const astronomiData = {
+            kiblat: { 
+                title: 'Kalkulator Arah Kiblat', 
+                desc: 'Modul kalkulasi arah kiblat presisi tinggi menggunakan parameter astronomi bola dan koordinat geografis Anda saat ini sedang dipersiapkan.', 
+                colorClass: 'cyan',
+                link: '#' // <-- MASUKIN LINK ARAH KIBLAT DI SINI
+            },
+            salat: { 
+                title: 'Jadwal Waktu Salat', 
+                desc: 'Sistem penjadwalan waktu salat dinamis yang beradaptasi dengan ketinggian tempat (elevasi) dan algoritma Ephemeris terkini.', 
+                colorClass: 'purple',
+                link: '#' // <-- MASUKIN LINK WAKTU SALAT DI SINI
+            },
+            hilal: { 
+                title: 'Analisis Visibilitas Hilal', 
+                desc: 'Kalkulator hisab ephemeris untuk memprediksi posisi bulan dan matahari, serta pengujian kriteria visibilitas MABIMS.', 
+                colorClass: 'blue',
+                link: '#' // <-- MASUKIN LINK HILAL DI SINI
+            },
+            edu: { 
+                title: 'Portal Riset Edukasi', 
+                desc: 'Repositori digital yang berisi jurnal ilmu falak, modul interaktif, dan literatur warisan astronomi Islam.', 
+                colorClass: 'emerald',
+                link: '#' // <-- MASUKIN LINK EDUKASI DI SINI
+            }
+        };
+
+        const colorMap = {
+            cyan: { bg: 'bg-cyan-900/20', border: 'border-cyan-500/40', text: 'text-cyan-400', btnBg: 'bg-cyan-600/20', btnHover: 'hover:bg-cyan-600/40', btnBorder: 'border-cyan-500/50', btnText: 'text-cyan-100' },
+            purple: { bg: 'bg-purple-900/20', border: 'border-purple-500/40', text: 'text-purple-400', btnBg: 'bg-purple-600/20', btnHover: 'hover:bg-purple-600/40', btnBorder: 'border-purple-500/50', btnText: 'text-purple-100' },
+            blue: { bg: 'bg-blue-900/20', border: 'border-blue-500/40', text: 'text-blue-400', btnBg: 'bg-blue-600/20', btnHover: 'hover:bg-blue-600/40', btnBorder: 'border-blue-500/50', btnText: 'text-blue-100' },
+            emerald: { bg: 'bg-emerald-900/20', border: 'border-emerald-500/40', text: 'text-emerald-400', btnBg: 'bg-emerald-600/20', btnHover: 'hover:bg-emerald-600/40', btnBorder: 'border-emerald-500/50', btnText: 'text-emerald-100' }
+        };
+
+        const astroModalNode = document.getElementById('astronomi-modal');
+        
+        function openAstronomiModal(type) {
+            const data = astronomiData[type];
+            const colors = colorMap[data.colorClass];
+            
+            // Set text
+            document.getElementById('astro-modal-title').innerText = data.title;
+            document.getElementById('astro-modal-desc').innerText = data.desc;
+            document.getElementById('astro-modal-link').href = data.link;
+            
+            // Set colors dynamically
+            document.getElementById('astro-modal-icon-wrapper').className = `w-20 h-20 mx-auto rounded-2xl flex items-center justify-center mb-6 ${colors.bg} ${colors.border}`;
+            document.getElementById('astro-modal-icon').className = `w-10 h-10 animate-spin-slow ${colors.text}`;
+            document.getElementById('astro-modal-badge').className = `text-xs font-mono tracking-widest uppercase ${colors.text}`;
+            document.getElementById('astro-modal-link').className = `w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold transition-all ${colors.btnBg} ${colors.btnHover} ${colors.btnBorder} border ${colors.btnText}`;
+            
+            astroModalNode.classList.remove('hidden');
+            astroModalNode.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeAstronomiModal() {
+            astroModalNode.classList.add('hidden');
+            astroModalNode.classList.remove('flex');
+        }
+
+        // 3. Fitur Background Animasi Canvas (Network/Bintang)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 1.5 + 0.5;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(6, 182, 212, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Menggambar garis penghubung antar titik
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(168, 85, 247, ${0.2 - dist/500})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        // Memulai animasi background seketika
+        animate();
 
         // Init
         renderTabs();
