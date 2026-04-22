@@ -17,10 +17,16 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
                         orbitron: ['Orbitron', 'sans-serif'],
                     },
                     colors: {
-                        brandBg: '#070a13' // <-- UBAH WARNA BACKGROUND UTAMA DI SINI
+                        deep: '#050914',
+                        neon: {
+                            blue: '#3b82f6',
+                            cyan: '#06b6d4',
+                            purple: '#a855f7'
+                        }
                     }
                 }
             }
@@ -29,39 +35,37 @@
 
     <style>
         body {
-            background-color: #070a13; /* <-- UBAH WARNA BACKGROUND DI SINI */
-            color: #e5e7eb;
+            background-color: #050914;
+            color: #e2e8f0;
             overflow-x: hidden;
         }
 
-        /* Background Bintang & Gradient */
-        .bg-space {
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050914;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(6, 182, 212, 0.5);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(168, 85, 247, 0.8);
+        }
+
+        /* Ambient Glowing Orbs */
+        .ambient-orb {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .bg-space-gradient {
-            position: absolute;
-            inset: 0;
-            opacity: 0.3;
-            /* <-- UBAH GRADIENT BACKGROUND DI SINI JIKA PERLU */
-            background-image: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #070a13 100%); 
-        }
-        .bg-space-stars {
-            position: absolute;
-            inset: 0;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out alternate;
             opacity: 0.4;
-            background-image: 
-                radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)), 
-                radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)), 
-                radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0,0,0,0)), 
-                radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)), 
-                radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)), 
-                radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 200px 200px;
         }
+        .orb-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: rgba(6, 182, 212, 0.4); }
+        .orb-2 { bottom: -10%; right: -10%; width: 600px; height: 600px; background: rgba(168, 85, 247, 0.3); animation-delay: -5s; }
+        .orb-3 { top: 40%; left: 40%; width: 400px; height: 400px; background: rgba(59, 130, 246, 0.3); animation-delay: -10s; }
 
         /* Animasi */
         @keyframes fadeIn {
@@ -93,16 +97,16 @@
 </head>
 <body class="selection:bg-cyan-500 selection:text-white relative">
 
-    <!-- Background -->
-    <div class="bg-space">
-        <div class="bg-space-gradient"></div>
-        <div class="bg-space-stars"></div>
-    </div>
+    <!-- Ambient Background -->
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-20 opacity-60"></canvas>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
 
     <!-- Navbar -->
     <nav class="relative z-10 w-full px-6 py-6 md:px-12 flex justify-between items-center border-b border-gray-800/50 bg-brandBg/80 backdrop-blur-md sticky top-0">
-        <div class="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200 font-orbitron">
-            A.M.Z.
+        <div class="font-orbitron font-bold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                A.M.Z.
         </div>
         <div class="hidden md:flex space-x-8 text-sm font-medium">
             <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a> <!-- Link kembali ke portofolio -->
